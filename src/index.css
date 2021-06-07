@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap");
+
+* {
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background-color: #111827;
+}
+.StripeCheckout:hover{
+  background: rgba(55, 65, 81, var(--tw-bg-opacity)) !important
+}
+.StripeCheckout{
+  width: 100% !important;
+  background: rgb(75 85 99) !important;
+}
+.StripeCheckout span{
+  background-image: none !important;
+  box-shadow: none !important
+}
