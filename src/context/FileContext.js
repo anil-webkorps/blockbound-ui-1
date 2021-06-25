@@ -1,8 +1,8 @@
 import React, {createContext, useState} from 'react'
 import axios from 'axios'
 
-// const SERVER_API_LINK = "https://api.blockbound.co/api/"
-const SERVER_API_LINK = "https://5cc6db7bb33a.ngrok.io/api/"
+const SERVER_API_LINK = "https://api.blockbound.co/api/"
+
 
 
 const FileContext = createContext(null);
@@ -12,9 +12,9 @@ function FileContextProvider(props) {
     const [configuration, setConfiguration] = useState({add_in_mail:false})
     const [loading, setLoading] = useState(false)
     const getCurrencies = async (currency) => {
-        let usd_price = await axios.get(`https://v6.exchangerate-api.com/v6/3febe786b94688359979c7d6/pair/USD/`+currency,)
+        let usd_price = await axios.get(`https://v6.exchangerate-api.com/v6/546edd28168933e1c0b6699f/pair/USD/`+currency,)
         console.log(usd_price)
-        let gbp_price = await axios.get(`https://v6.exchangerate-api.com/v6/3febe786b94688359979c7d6/pair/GBP/`+currency,)
+        let gbp_price = await axios.get(`https://v6.exchangerate-api.com/v6/546edd28168933e1c0b6699f/pair/GBP/`+currency,)
         setConfiguration({...configuration, currency_price:usd_price.data.conversion_rate, currency:currency, price:getPrice(configuration?.speed, usd_price.data.conversion_rate, gbp_price.data.conversion_rate), fee_price:gbp_price.data.conversion_rate})   
     }
     
@@ -77,13 +77,14 @@ function FileContextProvider(props) {
                 "subscribed": subscribed
             })
             console.log(response)
-            return response.data
+            return response
         } catch (e) {
             console.log(e.Error)
         }
     }
 
     const registerHash = async (hash) => {
+        console.log('called')
         try{
             let response = await axios.post(`${SERVER_API_LINK}v1/register`,
             {

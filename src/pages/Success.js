@@ -72,7 +72,7 @@ export default function Success() {
             </div>
             <div className="grid lg:grid-cols-1">
               <p className="mt-3 text-white font-bold text-base sm:mt-5">
-                Free paid
+                Fee paid
               </p>
               <p className="text-xs break-all text-gray-400">
               {fileContext?.configuration['currency']} {fileContext?.configuration?.price ? fileContext.configuration.price: "00"} 

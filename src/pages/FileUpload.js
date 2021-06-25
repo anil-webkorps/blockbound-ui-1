@@ -81,10 +81,10 @@ export default function FileUpload() {
         ["isHash"]: true,
         ["hash"]: new_hash,
       });
-      if (status?.pending) {
-        let val = await fileContext.registerHash(new_hash);
-      } else if (status?.pending == false) {
+      if (status?.pending == false) {
         history.push("/certificate/" + new_hash);
+      } else {
+        let val = await fileContext.registerHash(new_hash);
       }
     };
     reader.readAsArrayBuffer(fileContext.configuration["file"]);
@@ -101,25 +101,6 @@ export default function FileUpload() {
   const changeStep = (path) => {
     history.push("/" + path);
   };
-
-
-
-  // const onToken = async (token) => {
-  //   fileContext.setLoading(true);
-  //   let val = await fileContext?.storeTokenDetail(
-  //     token,
-  //     'USD',
-  //     0.5,
-  //     "Payment",
-  //     'c587ac8b24767bd048fbabb742bd04abcd67fd4735b07437ed1f66c0c8a30248'
-  //   );
-  //   if (val?.success) {
-  //     alert("succ")
-  //   } else {
-  //     alert("error")
-  //   }
-
-  // };
 
   return (
     <>

@@ -49,7 +49,10 @@ export default function Step3() {
     history.push("/" + render_path);
   };
 
-  const fromEuroToCent = (amount) => amount*100;
+  // const fromEuroToCent = (amount) => {
+  //   console.log(amount)
+  //   return amount*100;
+  // };
 
   const successPayment = () => {
     history.push("/Success");
@@ -68,7 +71,7 @@ export default function Step3() {
     );
 
     fileContext.setLoading(false);
-    if (val?.success) {
+    if (val?.data === "success") {
       successPayment();
     } else {
       let errors = {};
@@ -157,7 +160,7 @@ export default function Step3() {
                     stripeKey="pk_live_hh743xIIEN9oZK8kYIDfCkDH"
                     shippingAddress
                     billingAddress={true}
-                    amount={fromEuroToCent(fileContext?.configuration?.price)}
+                    amount={(fileContext?.configuration?.price)*100}
                     currency={fileContext?.configuration?.currency}
                     email={fileContext?.configuration?.email}
                   >
